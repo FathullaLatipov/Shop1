@@ -1,0 +1,69 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% block content %}
+		<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>{% trans 'Contact' %}</h1>
+					<nav class="d-flex align-items-center">
+						<a href="{% url 'contact:home' %}">{% trans 'Home' %}<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">{% trans 'Contact' %}</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="contact_area section_gap_bottom">
+		<div class="container">
+			<br>
+			<div style="position:relative;overflow:hidden;"><a href="https://yandex.uz/maps/10335/tashkent/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Ташкент</a><a href="https://yandex.uz/maps/10335/tashkent/stops/1543141586/?ll=69.279737%2C41.311151&tab=overview&utm_medium=mapframe&utm_source=maps&z=12" style="color:#eee;font-size:12px;position:absolute;top:14px;">Чиланзар — Яндекс.Карты</a><iframe src="https://yandex.uz/map-widget/v1/-/CCUimWeW1C" width="100%" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+
+<!--			<div id="mapBox" class="mapBox" data-lat="40.701083" data-lon="-74.1522848" data-zoom="13" data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."-->
+<!--			 data-mlat="40.701083" data-mlon="-74.1522848">-->
+<!--			</div>-->
+			<br>
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="contact_info">
+						<div class="info_item">
+							<i class="lnr lnr-home"></i>
+							<h6>{% trans 'Mirzo Ulugbek Tumani 16-28' %}</h6>
+<p></p>
+						</div>
+						<div class="info_item">
+							<i class="lnr lnr-phone-handset"></i>
+							<h6><a href="#">(90) 990-33-30</a></h6>
+							<p></p>
+<!--							<p>Mon to Fri 9am to 6 pm</p>-->
+						</div>
+						<div class="info_item">
+							<i class="lnr lnr-envelope"></i>
+							<h6><a href="#">sotti@mail.ru</a></h6>
+							<p></p>
+<!--							<p>Send us your query anytime!</p>-->
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-9">
+					<form class="row contact_form"  method="POST" style="display: flex;justify-content: space-around;">
+						{% csrf_token %}
+						<div class="col-md-6 text-right" style="float:right">
+							<div class="form-group">
+								<input type="text" class="form-control" id="name" name="name" placeholder="{% trans 'Enter your name' %}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'">
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control" id="email" name="email" placeholder="{% trans 'Enter email address' %}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+							</div>
+							<div class="form-group">
+								<textarea class="form-control" name="message" id="message" rows="1" placeholder="{% trans 'Enter Message' %}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'"></textarea>
+							</div>
+							<button type="submit" value="submit" class="primary-btn">{% trans 'Send Message' %}</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

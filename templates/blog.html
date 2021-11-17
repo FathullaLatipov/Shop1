@@ -1,0 +1,54 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>{% trans 'About Us' %}</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="{% url 'contact:home' %}">{% trans 'Home' %}<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="#">{% trans 'About Us' %}</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+<br>
+    <section class="about">
+        <div class="container">
+                    <h3 class="text-center">About us</h3>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet earum facere magni nemo, numquam officia? Alias, cum dignissimos dolor eligendi error impedit odit! Ab ad aspernatur assumenda consequuntur cupiditate dolorem dolores enim, esse hic illum iste itaque laboriosam minus molestiae mollitia natus necessitatibus nulla quam quis rerum totam vel, voluptas. Adipisci deserunt dicta, doloremque eaque, eos eum nulla, omnis praesentium provident saepe tempora veniam voluptas voluptate. Adipisci beatae consequatur cupiditate deleniti doloribus ducimus eaque eos error esse maiores minima natus nulla pariatur possimus praesentium quibusdam quo, sed soluta temporibus tenetur ullam, unde, ut voluptate. Accusantium blanditiis excepturi fugit maiores minus? A aperiam asperiores, commodi corporis culpa dolor dolorum error eum excepturi fugiat iste labore laborum laudantium maiores maxime, nobis omnis qui quod ratione recusandae repudiandae, rerum sint sit soluta sunt vero voluptatibus. Asperiores corporis dicta dolores dolorum earum eligendi et facere, impedit incidunt itaque iure modi molestias non omnis, repellendus reprehenderit similique temporibus. Ad alias aperiam architecto, asperiores autem blanditiis consectetur corporis cupiditate doloribus eaque eos error esse et eveniet facilis harum iure iusto minus nam nihil, non numquam obcaecati odio officia quam, quos recusandae sed temporibus tenetur ut vel velit voluptates voluptatibus! Architecto aspernatur aut officia tenetur. Labore, unde.</p>
+        </div>
+    </section>
+    <!--================Blog Categorie Area =================-->
+<!--    <section class="blog_categorie_area">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                {% for post in object_list %}-->
+<!--                 <div class="col-lg-4">-->
+<!--                    <div class="categories_post">-->
+<!--                        <a href="{% url 'blog:single' pk=post.pk %}">-->
+<!--                        <img src="{{ post.image.url }}" alt="post">-->
+<!--                        <div class="categories_details">-->
+<!--                            <div class="categories_text">-->
+<!--                                    <h5>{{ post.title }}</h5>-->
+<!--                                <div class="border_line"></div>-->
+<!--                                <p>Enjoy your social life together</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                 </div>-->
+<!--                {% endfor %}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+
+    <!--================Blog Categorie Area =================-->
+
+{% endblock %}

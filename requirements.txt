@@ -1,0 +1,17 @@
+asgiref==3.4.1
+Django==3.2.6
+django-active-link==0.1.8
+django-ckeditor==6.1.0
+django-crispy-forms==1.12.0
+django-environ==0.4.5
+django-js-asset==1.2.2
+django-modeltranslation==0.17.3
+django-registration-redux==2.9
+django-widget-tweaks==1.4.8
+Pillow==8.3.1
+pip==21.2.2
+python-decouple==3.4
+pytz==2021.1
+setuptools==57.4.0
+six==1.16.0
+sqlparse==0.4.1

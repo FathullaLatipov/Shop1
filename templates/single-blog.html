@@ -1,0 +1,143 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>About Us Page</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="category.html">Blog</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!--================Blog Area =================-->
+    <section class="blog_area single-post-area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 posts-list">
+                    <div class="single-post row">
+                        <div class="col-lg-12">
+                            <div class="feature-img">
+                                <img class="img-fluid w-100" src="{{ object.banner.url }}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-3  col-md-3">
+                            <div class="blog_info text-center">
+                                <div class="post_tag">
+                                    {% for tag in object.tags.all %}
+                                    <a href="#" style="text-transform: uppercase">#{{ tag.title }}</a>
+                                    {% endfor %}
+                                </div>
+                                <ul class="blog_meta list">
+                                    <li><a href="#">{{ object.author }}<i class="lnr lnr-user"></i></a></li>
+                                    <li>{{ object.created_at|date:'F d Y' }}<i class="lnr lnr-calendar-full"></i></a></li>
+                                    <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
+                                </ul>
+                                <ul class="social-links">
+                                    <li><a href="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-github"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 blog_details">
+                            <h2>{{ object.title }}</h2>
+                            <p class="excert">
+                                {{ object.content|safe }}
+                            </p>
+
+                        </div>
+
+                    </div>
+                    <div class="navigation-area">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                {% if object.get_prev %}
+                                <div class="thumb" style="background:none">
+                                    <a href="{% url 'blog:single' pk=object.get_prev.pk %}"><img class="img-fluid" src="https://img.icons8.com/material-outlined/34/000000/left.png" alt=""></a>
+                                </div>
+                                <div class="detials">
+                                    <p>Prev Post</p>
+                                        <h4>{{ object.get_prev.title }}</h4>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                {% if object.get_next %}
+                                <div class="detials">
+                                    <p>Next Post</p>
+                                        <h4>{{ object.get_next.title }}</h4>
+                                </div>
+
+                                <div class="thumb" style="background:none">
+                                    <a href="{% url 'blog:single' pk=object.get_next.pk %}">
+                                        <img class="img-fluid" src="https://img.icons8.com/material-rounded/34/000000/right.png"  alt=""></a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% for comment in object.get_comments %}
+                    <div class="comments-area">
+                        <h4>05 Comments</h4>
+                        <div class="comment-list">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="{% static '/img/user.png' %}" style="width:50px" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <h5><a href="#">{{ comment.name }}</a></h5>
+                                        <p class="date">{{ comment.created_at|timesince }} ago </p>
+                                        <p class="comment">
+                                           {{ comment.comment }}
+                                        </p>
+                                    </div>
+                                </div>
+<!--                                <div class="reply-btn">-->
+<!--                                    <a href="" class="btn-reply text-uppercase">reply</a>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                      {% endfor %}
+                    <div class="comment-form">
+                        <h4>Leave a Reply</h4>
+                        <form>
+                            <div class="form-group form-inline">
+                                <div class="form-group col-lg-6 col-md-6 name">
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter Name'">
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 email">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email address"
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Subject'">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                            </div>
+                            <a href="#" class="primary-btn submit_btn">Post Comment</a>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+
+{% endblock %}

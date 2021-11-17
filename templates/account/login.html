@@ -1,0 +1,107 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load account socialaccount %}
+{% load socialaccount %}
+
+{% load static %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+<style>
+    .btn-google{
+        background-color:red;
+        width:40px;
+    }
+
+</style>
+{% block common_scripts %}
+<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+<script type="text/javascript">
+  // Load jquery straight from the cdn for this page.
+  $(function() {
+    // We need some mappings for Providers names from AllAuth to the icon class names.
+    $('.btn-google').addClass('btn-google-plus');
+    $('.btn-linkedin_oauth2').addClass('btn-linkedin');
+    $('.fa-linkedin_oauth2').addClass('fa-linkedin');
+    $('#id_password').addClass('form-control');
+  });
+
+
+</script>
+{% endblock %} {% block content %}
+<div class="banner-area organic-breadcrumb" style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4-QkwW3JE8Isn33uxg_1pn-hi4bzWZV7jwQ&usqp=CAU);width:100%;height:100%;background-repeat:no-repeat;background-size:cover">
+    <h3 class="text-center p-3" style="font-weight:600">{% trans 'Login Page' %}</h3>
+    <div class="container col-md-6">
+    <ul class="socialaccount_providers" style="background-color:#fff;padding:1px;box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);margin:auto;border-radius:20px 20px 0px 0px">
+        {% get_providers as socialaccount_providers %}
+
+        {% for provider in socialaccount_providers %}
+
+
+        <li class="social_menu">
+            <a title="{{provider.name}}"
+               class="btn btn-block btn-social btn-md socialaccount_provider btn-{{provider.id}}"
+               href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"
+               style="color:#000;">
+
+                <img alt="{{provider.name}}" src="{% static 'img/features/' %}{{provider.name}}logo.png" width="40"
+                     height="40"><br>{% trans 'Login with' %} {{provider.name}}
+            </a>
+
+            <!--    <a style="" title="{{provider.name}}" class="socialaccount_provider2 {{provider.id}}"-->
+            <!--     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">{{provider.name|cut:'Facebook'|cut:'Instagram'}}</a>-->
+            <!--    <img alt="{{provider.name}}" src="{% static 'img/favourites/' }%{{provider.name}}facebook.png" width="40" height="40" >-->
+        </li>
+        {% endfor %}
+
+    </ul>
+
+    <div class="well login-well pt-4" style="box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);width: 320px;margin:auto;border-radius:0px 0px 30px 30px">
+        <div class="socialaccount_ballot" >
+            <ul class="socialaccount_providers" >
+                <form class="django-login" method="POST" action="{% url 'account_login' %}">
+                    {% csrf_token %} {% if form.non_field_errors %}
+                    <div class="alert alert-warning">
+                        <ul class="alert-message">
+                            {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    <div class="{% if form.login.errors %}has-error{% endif %}" >
+                        <span class=" glyphicon glyphicon-envelope" style="border-radius:10%"></span>
+                        <br>
+                        {{ form.login|add_class:"form-control my_form" }}
+                    </div>
+
+                    <div class="{% if form.password.errors %}has-error{% endif %}">
+                        <span class="p-2 glyphicon glyphicon-lock"></span>
+                        {{ form.password|add_class:"form-control my_form"  }}
+                    </div>
+
+                    <div class="fieldWrapper form-inline remember text-center my_form">
+                        {{ form.remember }}
+                        <label for="id_remember" class="text-muted p-2">{% trans 'Remember me' %}</label>
+                    </div>
+
+                    {% if redirect_field_value %}
+                    <input class="my_form" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
+                    <div class="btn-div pull-center my_form">
+                        <button class="primary-btn btn-block" style="border:none" type="submit">{% trans "Sign In" %}</button>
+                    </div>
+                    <div class="my_form p-2">
+                        <small><a class="text-muted" style="font-size:15px;margin-top:41px" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></small>
+                        <small><a class="text-muted" style="font-size:15px;padding:2px;float:right" href="{% url 'account_signup' %}">{% trans 'Sign up' %}</a></small>
+                    </div>
+                </form>
+            </ul>
+        </div>
+        <hr>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}

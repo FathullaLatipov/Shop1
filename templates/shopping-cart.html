@@ -1,0 +1,92 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load mytags %}
+
+{% block content %}
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>{% trans 'Shopping-cart' %}</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="{% url 'contact:home' %}">{% trans 'Home' %}<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">{% trans 'Shopping-cart' %}</a>
+<!--                    <a href="category.html">Fashon Category</a>-->
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Shopping Cart Section Begin -->
+<br>
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="shopping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>{% trans 'Product' %}</th>
+                                    <th>{% trans 'Quantity' %}</th>
+                                    <th>{% trans 'Total' %}</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for product in object_list %}
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="{{ product.image.url }}" style="width:50%" alt="">
+
+                                        </div>
+                                        <div class="product__cart__item__pic">
+                                           <p>{{ product.title }}</p>
+                                            <h5>{{ product.real_price }}som</h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input class="product-counter" data-input-id="{{ forloop.counter0 }}" id="count_{{ forloop.counter0 }}" type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td id="price_{{ forloop.counter0 }}" class="cart__price">{{ product.real_price }}som</td>
+                                    <td class="cart__close">
+                                        <a href="{% url 'products:add-cart' pk=product.pk %}?next={{ request.path }}?{{request.GET.urlencode}}">
+                                             <i class="fa fa-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="cart__total">
+                        <h6>{% trans 'Cart total' %}</h6>
+                        <ul>
+                            <li>{% trans 'Total' %} <span>{% get_cart_sum request %}.000som</span></li>
+                        </ul>
+                        <a href="{% url 'orders:create' %}" class="primary-btn">{% trans 'Proceed to checkout' %}</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+{% endblock %}
+{% block extra_js %}
+<script>
+   $('product-counter').on('change', function (e) {
+        console.log(e)
+   });
+</script>
+{% endblock %}

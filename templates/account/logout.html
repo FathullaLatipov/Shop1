@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load account socialaccount %}
+{% load socialaccount %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+
+<div class="banner-area organic-breadcrumb w-100" style="background-image:url(http://www.dejurka.ru/wp-content/uploads/2014/05/free-blur-background13.jpg);height:500px;background-repeat:no-repeat;background-size:cover">
+<div class="my_logout container p-5" style="background-color: rgba(0, 0, 0, .7);background-size:cover;">
+  <div class="row" style="margin:auto;padding:auto">
+    <div class="col-md-6">
+      <h1 style="color:#fff">{% trans "Sign Out" %}</h1>
+
+<p style="color:#fff">{% trans 'Are you sure you want to sign out?' %} <span style="color:#fff;font-size:18px">{{ user.username }}</span></p>
+
+<form class="p-2" method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button class="btn btn-outline-danger" type="submit">{% trans 'Sign Out' %}</button>
+  <a href="/"><button class="btn btn-outline-warning">{% trans 'Back to home' %}</button></a>
+</form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>{% trans 'Purchase history' %}</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="{% url 'contact:home' %}">{% trans 'Home' %}<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="#">{% trans 'Purchase history' %}</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+<br>
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <th>{% trans 'Quantity' %}</th>
+            <th>{% trans 'id' %}</th>
+            <th>{% trans 'Products' %}</th>
+            <th>{% trans 'Price' %}</th>
+            <th>{% trans 'Created_at' %}</th>
+        </tr>
+        {% for order in object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                {% for product in order.products.all %}
+                 <td>{{ product.sku }}</td>
+                 {% endfor %}
+                <td style="width:290px">
+                    {% for product in order.products.all %}
+                     <img src="{{ product.image.url  }}" style="width:50%" alt="">  <li style="list-style-type:none">{{ product.title }}</li>
+                    {% endfor %}
+                </td>
+
+                <td>{{ order.price }}00som</td>
+                <td>{{ order.created_at }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

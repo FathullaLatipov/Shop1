@@ -1,0 +1,478 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load mytags %}
+{% block content %}
+<!-- start banner Area -->
+<section class="banner-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center justify-content-start">
+            <div class="col-lg-12">
+                <div class="active-banner-slider owl-carousel">
+                    <!-- single-slide -->
+                    <div class="row single-slide align-items-center d-flex">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="banner-content">
+                                <h1>{% trans 'Nike New Collection!' %}</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="banner-img">
+                                <img class="img-fluid" src="{% static 'img/banner/banner-img.png' %} " alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single-slide -->
+                    <div class="row single-slide">
+                        <div class="col-lg-5">
+                            <div class="banner-content">
+                                <h1>{% trans 'Nike New Collection!' %}</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="banner-img">
+                                <img class="img-fluid" src="{% static 'img/banner/banner-img.png' %} " alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<!-- start features Area -->
+<section class="features-area section_gap">
+    <div class="container">
+        <div class="row features-inner">
+            <!-- single features -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-features">
+                    <div class="f-icon">
+                        <img src="{% static 'img/features/f-icon1.png' %} " alt="">
+                    </div>
+                    <h6>{% trans 'Free Delivery' %}</h6>
+                    <p>{% trans 'Free Shipping on all order' %}</p>
+                </div>
+            </div>
+            <!-- single features -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-features">
+                    <div class="f-icon">
+                        <img src="{% static 'img/features/f-icon2.png' %} " alt="">
+                    </div>
+                    <h6>{% trans 'Return Policy' %}</h6>
+                    <p>{% trans 'Return Policy' %}</p>
+                </div>
+            </div>
+            <!-- single features -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-features">
+                    <div class="f-icon">
+                        <img src="{% static 'img/features/f-icon3.png' %} " alt="">
+                    </div>
+                    <h6>{% trans '24/7 Support' %}</h6>
+                    <p>{% trans '24/7 Support operators' %}</p>
+                </div>
+            </div>
+            <!-- single features -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-features">
+                    <div class="f-icon">
+                        <img src="{% static 'img/features/f-icon4.png' %} " alt="">
+                    </div>
+                    <h6>{% trans 'Secure Payment' %}</h6>
+                    <p>{% trans 'Secure Payment PayPal and more' %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end features Area -->
+
+<!-- Start category Area -->
+<section class="category-area">
+    <div class="container">
+         <h3 class="text-center">{% trans 'Category' %}</h3>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <a href="/products/?category=1">
+                         <div class="single-deal">
+                            <div class="overlay"></div>
+                              <img class="img-fluid w-100" src="{% static 'img/category/1.png' %}" alt="">
+                                <div class="deal-details">
+                                    {% for cat in cats %}
+                                         <h6 class="deal-title">{% trans 'Для мальчиков' %}</h6>
+                                    {% endfor %}
+                                </div>
+                          </div>
+                         </a>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="single-deal">
+                             <a href="/products/?category=2">
+                            <div class="overlay"></div>
+                            <img class="img-fluid w-100" src="{% static 'img/category/4.png' %} " alt="">
+                                <div class="deal-details">
+                                      {% for cat in cats %}
+                                         <h6 class="deal-title">{% trans 'Для детей' %}</h6>
+                                    {% endfor %}
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="single-deal">
+                            <a href="/products/?category=3">
+                                <div class="overlay"></div>
+                              <img class="img-fluid w-100" src="{% static 'img/category/5.2.jpg' %} " alt="">
+                                <div class="deal-details">
+                                    <h6 class="deal-title">{% trans 'Головоломки' %}</h6>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="single-deal">
+                            <a href="/products/?category=4">
+                                <div class="overlay"></div>
+                            <img class="img-fluid w-100" src="{% static 'img/category/c4.jpg.png' %} " alt="">
+                                <div class="deal-details">
+                                    <h6 class="deal-title">{% trans 'Лего' %}</h6>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-deal">
+                    <a href="/products/?category=5">
+                    <div class="overlay"></div>
+                      <img class="img-fluid w-100" src="{% static 'img/category/2.png' %} " alt="">
+                                <div class="deal-details">
+                                    <h6 class="deal-title">{% trans 'Куклы' %}</h6>
+                                </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End category Area -->
+
+<!-- start product Area -->
+
+    <!-- single product slide -->
+    <div class="single-product-slider">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        <br>
+                        <h1>{% trans 'Latest Products' %}</h1>
+                        <p>{% trans 'Shown here are our latest products' %}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+               {% for product in products %}
+                <div class="col-lg-3 col-md-6">
+                      {% include 'layouts/product_block.html' %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- single product slide -->
+    <div class="single-product-slider">
+<!--        <div class="container">-->
+<!--            <div class="row justify-content-center">-->
+<!--                <div class="col-lg-6 text-center">-->
+<!--                    <div class="section-title">-->
+<!--                        <h1>Coming Products</h1>-->
+<!--                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut-->
+<!--                            labore et-->
+<!--                            dolore-->
+<!--                            magna aliqua.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--               {% for product in products %}-->
+<!--                <div class="col-lg-3 col-md-6">-->
+<!--                        {% include 'layouts/product_block.html' %}-->
+<!--                </div>-->
+<!--               {% endfor %}-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+
+<!-- end product Area -->
+
+<!-- Start exclusive deal Area -->
+<section class="exclusive-deal-area">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6 no-padding exclusive-left">
+                <div class="row clock_sec clockdiv" id="clockdiv">
+                    <div class="col-lg-12">
+                        <h1>{% trans 'Exclusive Hot Deal Ends Soon!' %}</h1>
+                        <br>
+
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="row clock-wrap">
+                            <div class="col clockinner1 clockinner">
+                                <h1 class="days">150</h1>
+                                <span class="smalltext">{% trans 'Days' %}</span>
+                            </div>
+                            <div class="col clockinner clockinner1">
+                                <h1 class="hours">23</h1>
+                                <span class="smalltext">{% trans 'Hours' %}</span>
+                            </div>
+                            <div class="col clockinner clockinner1">
+                                <h1 class="minutes">47</h1>
+                                <span class="smalltext">{% trans 'Mins' %}</span>
+                            </div>
+                            <div class="col clockinner clockinner1">
+                                <h1 class="seconds">59</h1>
+                                <span class="smalltext">{% trans 'Secs' %}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/products/" class="primary-btn">{% trans 'Shop Now' %}</a>
+            </div>
+            <div class="col-lg-6 no-padding exclusive-right">
+                <div class="active-exclusive-product-slider">
+                    <!-- single exclusive carousel -->
+                    {% for product in products %}
+                    <div class="single-exclusive-slider">
+                        <img class="img-fluid" src="{{ product.image.url }} " alt="">
+                        <div class="product-details">
+<!--                             <a href="{% url 'products:add-cart' pk=product.pk %}?next={{request.path}}{{request.GET.urlendcode}}" class="social-info">
+                                      {% if product|in_cart:request %}
+                                            <span class="ti-bag"></span>
+                                            <p class="hover-text">Remove bag-</p>
+                                        {% else %}
+                                            <span class="ti-bag"></span>
+                                            <p class="hover-text">add to bag +</p>
+                                      {% endif %}
+                                            </a>-->
+                            <div class="price">
+                                <h6>{{ product.real_price }}</h6>
+                                <h6 class="l-through">$210.00</h6>
+                            </div>
+                            <h4>{{ product.title }}</h4>
+                            <div class="add-bag d-flex align-items-center justify-content-center">
+                                <a class="add-btn" href="{% url 'products:add-cart' pk=product.pk %}?next={{request.path}}{{request.GET.urlendcode}}" class="social-info">
+                                    {% if product|in_cart:request %}
+                                            <span class="ti-bag"></span>
+                                        {% else %}
+                                            <span class="ti-bag"></span>
+                                      {% endif %}
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single exclusive carousel -->
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End exclusive deal Area -->
+
+<!-- Start brand Area -->
+<section class="brand-area section_gap">
+    <div class="container">
+        <div class="row">
+            <a class="col single-img" href="#">
+                <img class="img-fluid d-block mx-auto" src="{% static 'img/brand/1.png' %} " alt="">
+            </a>
+            <a class="col single-img" href="#">
+                <img class="img-fluid d-block mx-auto" src="{% static 'img/brand/2.png' %} " alt="">
+            </a>
+            <a class="col single-img" href="#">
+                <img class="img-fluid d-block mx-auto" src="{% static 'img/brand/3.png' %} " alt="">
+            </a>
+            <a class="col single-img" href="#">
+                <img class="img-fluid d-block mx-auto" src="{% static 'img/brand/4.png' %} " alt="">
+            </a>
+            <a class="col single-img" href="#">
+                <img class="img-fluid d-block mx-auto" src="{% static 'img/brand/5.png' %} " alt="">
+            </a>
+        </div>
+    </div>
+</section>
+<!-- End brand Area -->
+
+<!-- Start related-product Area -->
+<!--<section class="related-product-area section_gap_bottom">-->
+<!--    <div class="container">-->
+<!--        <div class="row justify-content-center">-->
+<!--            <div class="col-lg-6 text-center">-->
+<!--                <div class="section-title">-->
+<!--                    <h1>Deals of the Week</h1>-->
+<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut-->
+<!--                        labore et dolore-->
+<!--                        magna aliqua.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-9">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20">-->
+<!--                        <div class="single-related-product d-flex">-->
+<!--                            <a href="#"><img src="{% static 'img/r1.jpg' %} " alt=""></a>-->
+<!--                            <div class="desc">-->
+<!--                                <a href="#" class="title">Black lace Heels</a>-->
+<!--                                <div class="price">-->
+<!--                                    <h6>$189.00</h6>-->
+<!--                                    <h6 class="l-through">$210.00</h6>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20">-->
+<!--                        <div class="single-related-product d-flex">-->
+<!--                            <a href="#"><img src="{% static 'img/r2.jpg' %} " alt=""></a>-->
+<!--                            <div class="desc">-->
+<!--                                <a href="#" class="title">Black lace Heels</a>-->
+<!--                                <div class="price">-->
+<!--                                    <h6>$189.00</h6>-->
+<!--                                    <h6 class="l-through">$210.00</h6>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20">-->
+<!--                        <div class="single-related-product d-flex">-->
+<!--                            <a href="#"><img src="{% static 'img/r3.jpg' %} " alt=""></a>-->
+<!--                            <div class="desc">-->
+<!--                                <a href="#" class="title">Black lace Heels</a>-->
+<!--                                <div class="price">-->
+<!--                                    <h6>$189.00</h6>-->
+<!--                                    <h6 class="l-through">$210.00</h6>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20">-->
+<!--                        <div class="single-related-product d-flex">-->
+<!--                            <a href="#"><img src="{% static 'img/r5.jpg' %} " alt=""></a>-->
+<!--                            <div class="desc">-->
+<!--                                <a href="#" class="title">Black lace Heels</a>-->
+<!--                                <div class="price">-->
+<!--                                    <h6>$189.00</h6>-->
+<!--                                    <h6 class="l-through">$210.00</h6>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20">-->
+<!--                        <div class="single-related-product d-flex">-->
+<!--                            <a href="#"><img src="{% static 'img/r6.jpg' %} " alt=""></a>-->
+<!--                            <div class="desc">-->
+<!--                                <a href="#" class="title">Black lace Heels</a>-->
+<!--                                <div class="price">-->
+<!--                                    <h6>$189.00</h6>-->
+<!--                                    <h6 class="l-through">$210.00</h6>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20">-->
+<!--                        <div class="single-related-product d-flex">-->
+<!--                            <a href="#"><img src="{% static 'img/r7.jpg' %} " alt=""></a>-->
+<!--                            <div class="desc">-->
+<!--                                <a href="#" class="title">Black lace Heels</a>-->
+<!--                                <div class="price">-->
+<!--                                    <h6>$189.00</h6>-->
+<!--                                    <h6 class="l-through">$210.00</h6>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-4 col-sm-6">-->
+<!--                        <div class="single-related-product d-flex">-->
+<!--                            <a href="#"><img src="{% static 'img/r9.jpg' %} " alt=""></a>-->
+<!--                            <div class="desc">-->
+<!--                                <a href="#" class="title">Black lace Heels</a>-->
+<!--                                <div class="price">-->
+<!--                                    <h6>$189.00</h6>-->
+<!--                                    <h6 class="l-through">$210.00</h6>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-4 col-sm-6">-->
+<!--                        <div class="single-related-product d-flex">-->
+<!--                            <a href="#"><img src="{% static 'img/r10.jpg' %} " alt=""></a>-->
+<!--                            <div class="desc">-->
+<!--                                <a href="#" class="title">Black lace Heels</a>-->
+<!--                                <div class="price">-->
+<!--                                    <h6>$189.00</h6>-->
+<!--                                    <h6 class="l-through">$210.00</h6>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-4 col-sm-6">-->
+<!--                        <div class="single-related-product d-flex">-->
+<!--                            <a href="#"><img src="{% static 'img/r11.jpg' %} " alt=""></a>-->
+<!--                            <div class="desc">-->
+<!--                                <a href="#" class="title">Black lace Heels</a>-->
+<!--                                <div class="price">-->
+<!--                                    <h6>$189.00</h6>-->
+<!--                                    <h6 class="l-through">$210.00</h6>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-3">-->
+<!--                <div class="ctg-right">-->
+<!--                    <a href="#" target="_blank">-->
+<!--                        <img class="img-fluid d-block mx-auto" src="{% static 'img/category/5.2.jpg' %} " alt="">-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<!-- End related-product Area -->
+
+{% endblock %}
+{% block extra_js %}
+    <script>
+        function addUrlParameter(name, value) {
+            let searchParams = new URLSearchParams(window.location.search)
+            if (['category'].includes(name)) {
+                searchParams.delete('?');
+            }
+            if (searchParams.has(name) && searchParams.get(name) === value) {
+                searchParams.delete(name);
+            } else {
+                searchParams.set(name, value)
+            }
+            window.location.search = searchParams.toString()
+        }
+    </script>
+
+{% endblock %}

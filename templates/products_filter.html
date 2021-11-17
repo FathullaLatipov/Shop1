@@ -1,0 +1,61 @@
+{% load i18n %}
+<style>
+    .a-active {
+        color:#ffba00 !important
+    }
+</style>
+
+<div class="col-xl-3 col-lg-4 col-md-5">
+    <a style="color:#000;" href="{% url 'products:lists' %}">
+        <button class="btn btn2 w-100" style="background-color:#ffba00">
+            <img class="p-2" src="https://img.icons8.com/material-outlined/24/000000/broom.png"/>{% trans 'Clear filter' %}</button></a>
+
+            <div class="sidebar-categories">
+                  <div class="common-filter">
+                      <br>
+                    <div class="head">{% trans 'Price' %}</div>
+                      <br>
+                    <input type="text" class="js-range-slider" style="background-color:white"/>
+                </div>
+                <br>
+                <div class="head" id="men">{% trans 'Categories' %}</div>
+                <ul class="main-categories">
+                    <li class="main-nav-list">
+                        {% for categories in category %}
+                         <a {% if request.GET.category == categories.pk|stringformat:'i' %}class="a-active"{% endif %} onclick="addUrlParameter('category', '{{ categories.pk }}')" style="cursor:pointer">
+                            <span class="lnr lnr-arrow-right"></span>{{ categories.title }}<span
+                                class="number"></span></a>
+                        {% endfor %}
+                    </li>
+                </ul>
+                <br>
+            </div>
+            <div class="sidebar-categories">
+                <div class="head">{% trans 'Brands' %}</div>
+                <ul class="main-categories">
+                    <li class="main-nav-list">
+                         {% for brand in brands %}
+                        <a {% if request.GET.brand == brand.pk|stringformat:'i' %}class="a-active"{% endif %}  onclick="addUrlParameter('brand', '{{ brand.pk }}')" style="cursor:pointer">
+                            <span class="lnr lnr-arrow-right"></span>{{ brand.title }}<span
+                                class="number"></span></a>
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-filter mt-50">
+                <div class="sidebar-categories">
+                    <div class="head" style="color:#fff">{% trans 'Tags' %}</div>
+                    <ul class="main-categories">
+                        <li class="main-nav-list">
+                            {% for tag in tags %}
+                             <a {% if request.GET.tag == tag.pk|stringformat:'i' %}class="a-active"{% endif %}  onclick="addUrlParameter('tag', '{{ tag.pk }}')" style="cursor:pointer">
+                                <span class="lnr lnr-arrow-right"></span>{{ tag.title }}<span
+                                    class="number">(53)</span></a>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+                <br>
+            </div>
+        </div>
+
