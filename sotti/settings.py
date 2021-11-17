@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import django_heroku
 from decouple import config
 from django.utils.translation import ugettext_lazy as _
 
@@ -175,3 +175,6 @@ try:
     from .settings_local import *
 except ImportError:
     pass
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
